@@ -1,0 +1,16 @@
+ docker exec -it 76e9ff80e464 /bin/sh
+
+ cd /opt-spark-jobs
+
+docker exec -it 240cb8532974 /bin/sh spark-submit \
+    --master spark://spark-master:7077 \
+    --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.5 \
+    /opt-spark-jobs/kafkaConsumer.py
+
+docker exec -it 240cb8532974 /bin/sh spark-submit \
+    --master spark://spark-master:7077 \
+    /opt-spark-jobs/kafkaConsumer.py
+
+
+docker exec -it d79087056d68 /bin/sh spark-submit --master spark://spark-master:7077 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.5 /opt-spark-jobs/checking.py
+
